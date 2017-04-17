@@ -1,2 +1,2 @@
-#Yesod Calculator API
-#Functional Programming 2017
+# Yesod Calculator API
+## Functional Programming 2017
