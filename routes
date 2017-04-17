@@ -1,0 +1,7 @@
+/              HomeR GET
+/add/#Int/#Int AddR GET
+/sub/#Int/#Int SubR GET
+/mult/#Int/#Int MultR GET
+/div/#Int/#Int DivR GET
+/calcs         CalcR GET
+/list          ListR GET

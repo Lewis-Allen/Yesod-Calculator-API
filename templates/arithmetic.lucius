@@ -1,0 +1,16 @@
+body {
+   background-color: #fff2e6;
+}
+
+h1 {
+   text-align: center;
+   text-decoration: underline;
+   font-family: Century Gothic, sans-serif;
+}
+
+p {
+   font-family: Century Gothic, sans-serif;
+   padding = 0;
+   font-size: 100px;
+   text-align: center;
+}

@@ -1,0 +1,9 @@
+<body>
+    <h1>Calculator API
+    <h2>By Lewis Allen
+    <ul>
+        <li><a href=@{AddR 10 5}>Addition     
+        <li><a href=@{SubR 10 5}>Subtraction
+        <li><a href=@{MultR 10 5}>Multiplication
+        <li><a href=@{DivR 10 5}>Division   
+        <li><a href=@{ListR}>Calculation History

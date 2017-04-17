@@ -1,0 +1,3 @@
+<body>
+    <h1>#{operation}
+    <p>#{x} #{operator} #{y} = #{z}

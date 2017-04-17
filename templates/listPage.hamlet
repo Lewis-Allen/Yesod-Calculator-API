@@ -1,0 +1,8 @@
+<body>
+    <h1>Welcome to Calculations
+    $if null calcs
+        <p>No calculations to display!
+    $else
+        <ul>
+            $forall calc <- calcs
+                <li>#{calcToString calc}
