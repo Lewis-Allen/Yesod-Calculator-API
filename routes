@@ -5,3 +5,4 @@
 /div/#Int/#Int DivR GET
 /calcs         CalcR GET
 /list          ListR GET
+/auth AuthR Auth getAuth

@@ -1,6 +1,16 @@
 <body>
     <h1>Calculator API
     <h2>By Lewis Allen
+    $maybe _ <- maid
+        <h3>Your current auth ID: #{show $ fromJust maid}
+    $nothing
+        <h3>Your current auth ID: Not logged in
+    <ul>
+        $maybe _ <- maid
+            <li><a href=@{AuthR LogoutR}>Logout</a>
+        $nothing
+            <li><a href=@{AuthR LoginR}>Go to the login page</a>
+    <h2 #function>Functions
     <ul>
         <li><a href=@{AddR 10 5}>Addition     
         <li><a href=@{SubR 10 5}>Subtraction

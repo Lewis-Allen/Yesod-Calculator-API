@@ -2,12 +2,49 @@
 {-# LANGUAGE TemplateHaskell   #-}
 {-# LANGUAGE TypeFamilies      #-}
 {-# LANGUAGE ViewPatterns      #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+ 
 module Foundation where
 
 import Yesod.Core
+import Network.HTTP.Client.Conduit (Manager)
+import Yesod
+import Yesod.Auth
+import Yesod.Auth.GoogleEmail2
+import Data.Text
 
 data App = App
+    { httpManager :: Manager
+    }
+
+clientId :: Text
+clientId = "224651177987-2eaniae25ln7ar5fdqcg4neqs5u3jg19.apps.googleusercontent.com"
+
+clientSecret :: Text
+clientSecret = "1RYA4l43bn6LGg-bedf8dqKd"
 
 mkYesodData "App" $(parseRoutesFile "routes")
 
-instance Yesod App
+instance YesodAuth App where
+    type AuthId App = Text
+    getAuthId = return . Just . credsIdent
+
+    loginDest _ = HomeR
+    logoutDest _ = HomeR
+
+    authPlugins _ =
+        [
+            authGoogleEmail clientId clientSecret
+        ]
+
+    authHttpManager = httpManager
+
+    -- The default maybeAuthId assumes a Persistent database. We're going for a
+    -- simpler AuthId, so we'll just do a direct lookup in the session.
+    maybeAuthId = lookupSession "_ID"
+
+instance RenderMessage App FormMessage where
+    renderMessage _ _ = defaultFormMessage
+
+instance Yesod App where
+    approot = ApprootStatic "http://localhost:3000"
