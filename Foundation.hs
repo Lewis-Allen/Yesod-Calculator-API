@@ -14,7 +14,8 @@ import Yesod.Auth.GoogleEmail2
 import Data.Text
 
 data App = App
-    { httpManager :: Manager
+    {
+        httpManager :: Manager
     }
 
 clientId :: Text
@@ -39,8 +40,6 @@ instance YesodAuth App where
 
     authHttpManager = httpManager
 
-    -- The default maybeAuthId assumes a Persistent database. We're going for a
-    -- simpler AuthId, so we'll just do a direct lookup in the session.
     maybeAuthId = lookupSession "_ID"
 
 instance RenderMessage App FormMessage where
@@ -48,3 +47,17 @@ instance RenderMessage App FormMessage where
 
 instance Yesod App where
     approot = ApprootStatic "http://localhost:3000"
+    
+    -- Must be logged in to view calculation history.
+    isAuthorized ListR _ = isLoggedIn
+    
+    -- Other pages do not require logging in.
+    isAuthorized _ _ = return Authorized
+    
+-- Checks if a user is logged in.
+isLoggedIn :: HandlerT App IO AuthResult
+isLoggedIn = do
+    user <- maybeAuthId
+    return $ case user of
+        Nothing -> AuthenticationRequired
+        Just _ -> Authorized

@@ -4,13 +4,14 @@
 module Handlers where
 
 import Foundation
-import Yesod.Core
 import MyDatabase
 import Utils
+
+import Yesod.Core
+import Yesod.Auth
 import Text.Lucius
 import Text.Hamlet
 import Text.Blaze
-import Yesod.Auth
 import Data.Maybe
 
 -- Home page
@@ -79,6 +80,9 @@ getListR = defaultLayout $ do
     setTitle "List of Calculations"
     toWidget $(hamletFile "templates/listPage.hamlet")
     toWidget $(luciusFile "templates/listPage.lucius")
+
+getHistoryR :: Handler Html
+getHistoryR = undefined
     
 ----- HTML and CSS -----
 -- Default HTML and CSS loader for arithmetic operation pages.        

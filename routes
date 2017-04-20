@@ -6,3 +6,4 @@
 /calcs         CalcR GET
 /list          ListR GET
 /auth AuthR Auth getAuth
+/history       HistoryR GET

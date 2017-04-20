@@ -9,7 +9,7 @@ data Calculation = Calculation Int Int String Float deriving (Show)
 
 instance FromRow Calculation where
     fromRow = Calculation <$> field <*> field <*> field <*> field
-    
+
 instance ToRow Calculation where
   toRow (Calculation operand1 operand2 operator result) = toRow (operand1, operand2, operator, result)
 
