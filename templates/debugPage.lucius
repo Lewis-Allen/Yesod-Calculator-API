@@ -1,0 +1,15 @@
+#homelink {
+    margin: 0px 0px 0px 5px;
+    padding: 0px 0px 0px 0px;
+}
+body {
+    background-color: #fff2e6;
+}
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    font-family: Century Gothic, sans-serif;
+}
+p {
+    font-family: Century Gothic, sans-serif;
+}

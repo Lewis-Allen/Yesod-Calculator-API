@@ -1,9 +1,8 @@
-/              HomeR GET
-/add/#Int/#Int AddR GET
-/sub/#Int/#Int SubR GET
-/mult/#Int/#Int MultR GET
-/div/#Int/#Int DivR GET
-/calcs         CalcR GET
-/list          ListR GET
+/               HomeR  GET
+/add/#Int/#Int  AddR   GET
+/sub/#Int/#Int  SubR   GET
+/mult/#Int/#Int MultR  GET
+/div/#Int/#Int  DivR   GET
+/debug          DebugR GET
+/list           ListR  GET
 /auth AuthR Auth getAuth
-/history       HistoryR GET

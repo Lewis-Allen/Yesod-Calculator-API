@@ -1,8 +1,10 @@
 <body>
-    <h1>Welcome to Calculations
+    <p #homelink><a href=@{HomeR}>Back to home</a>
+    <h1>Calculations by User
     $if null calcs
         <p>No calculations to display!
     $else
         <ul>
             $forall calc <- calcs
                 <li>#{calcToString calc}
+    

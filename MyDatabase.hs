@@ -5,37 +5,37 @@ module MyDatabase where
 import Data.Foldable
 import Database.SQLite.Simple
 
-data Calculation = Calculation Int Int String Float deriving (Show)
+data Calculation = Calculation String Int Int String Float deriving (Show)
 
 instance FromRow Calculation where
-    fromRow = Calculation <$> field <*> field <*> field <*> field
+    fromRow = Calculation <$> field <*> field <*> field <*> field <*> field
 
 instance ToRow Calculation where
-  toRow (Calculation operand1 operand2 operator result) = toRow (operand1, operand2, operator, result)
+  toRow (Calculation user operand1 operand2 operator result) = toRow (user, operand1, operand2, operator, result)
 
 createDB :: IO ()
 createDB = do
     conn <- open "calculations.db"
-    execute_ conn "CREATE TABLE IF NOT EXISTS calculations (operand1 INTEGER, operand2 INTEGER, operator TEXT, result FLOAT)"
+    execute_ conn "CREATE TABLE IF NOT EXISTS calculations (user TEXT, operand1 INTEGER, operand2 INTEGER, operator TEXT, result FLOAT)"
     close conn
     
 viewDB :: IO ()
 viewDB = do
     conn <- open "calculations.db"
     r <- query_ conn "SELECT * from calculations"
-    forM_ r $ \(operand1, operand2, operator, result) ->
-        putStrLn $ show (operand1 :: Int) ++ " " ++ operator ++ " " ++ show (operand2 :: Int) ++ " = " ++ show (result :: Float)
+    forM_ r $ \(user, operand1, operand2, operator, result) ->
+        putStrLn $ user ++ " " ++ show (operand1 :: Int) ++ " " ++ operator ++ " " ++ show (operand2 :: Int) ++ " = " ++ show (result :: Float)
     close conn
     
-insertCalc :: Int -> Int -> String -> Float -> IO ()
-insertCalc w x y z = do
+insertCalc :: String -> Int -> Int -> String -> Float -> IO ()
+insertCalc v w x y z = do
                 conn <- open "calculations.db"
-                execute conn "INSERT INTO calculations (operand1, operand2, operator, result) VALUES (?,?,?,?)" (Calculation w x y z)
+                execute conn "INSERT INTO calculations (user, operand1, operand2, operator, result) VALUES (?,?,?,?,?)" (Calculation v w x y z)
                 close conn    
     
-getCalcs :: IO ([(Int, Int, String, Float)])
-getCalcs = do
+getCalcs :: String -> IO ([(Int, Int, String, Float)])
+getCalcs name = do
     conn <- open "calculations.db"
-    r <- query_ conn "SELECT * from calculations"
+    r <- query conn "SELECT operand1, operand2, operator, result from calculations WHERE user = ?" (Only (name :: String))
     close conn
     return r

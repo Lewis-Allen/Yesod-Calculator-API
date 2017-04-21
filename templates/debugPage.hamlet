@@ -1,4 +1,3 @@
 <body>
     <p #homelink><a href=@{HomeR}>Back to home</a>
-    <h1>#{operation}
-    <p>#{x} #{operator} #{y} = #{z}
+    <h1>See Terminal for a list of calculations
