@@ -15,7 +15,7 @@ import Text.Lucius
 import Text.Hamlet
 import Text.Blaze
 import Data.Maybe
-import Pi (getDigit, pi)
+import Pi (pi)
 
 -- Home page
 getHomeR :: Handler Html 
@@ -95,10 +95,14 @@ getDebugR = do
 
 getPiR :: Int -> Handler Html
 getPiR x = do
+    maid <- maybeAuthId
+    let v = show maid
+    --liftIO $ insertCalc v x Nothing "Pi" (fromIntegral z)
     defaultLayout $ do
         toWidget $(hamletFile "templates/piPage.hamlet")
         toWidget $(luciusFile "templates/piPage.lucius")
-            where z = getDigit x pi
+            where y = pi !! x
+                  z = getSuffix x
        
 ----- HTML and CSS -----
 -- Default HTML and CSS loader for arithmetic operation pages.        
