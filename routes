@@ -5,4 +5,5 @@
 /div/#Int/#Int  DivR   GET
 /debug          DebugR GET
 /list           ListR  GET
+/pi/#Int        PiR    GET
 /auth AuthR Auth getAuth

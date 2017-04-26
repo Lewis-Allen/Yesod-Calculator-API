@@ -3,6 +3,8 @@
 {-# LANGUAGE TemplateHaskell   #-}
 module Handlers where
 
+import Prelude hiding (pi)
+
 import Foundation
 import MyDatabase
 import Utils
@@ -13,9 +15,10 @@ import Text.Lucius
 import Text.Hamlet
 import Text.Blaze
 import Data.Maybe
+import Pi (getDigit, pi)
 
 -- Home page
-getHomeR :: Handler Html
+getHomeR :: Handler Html 
 getHomeR = do 
         maid <- maybeAuthId
         defaultLayout $ do
@@ -90,6 +93,13 @@ getDebugR = do
         toWidget $(hamletFile "templates/debugPage.hamlet")
         toWidget $(luciusFile "templates/debugPage.lucius")
 
+getPiR :: Int -> Handler Html
+getPiR x = do
+    defaultLayout $ do
+        toWidget $(hamletFile "templates/piPage.hamlet")
+        toWidget $(luciusFile "templates/piPage.lucius")
+            where z = getDigit x pi
+       
 ----- HTML and CSS -----
 -- Default HTML and CSS loader for arithmetic operation pages.        
 buildPage :: String -> String -> Int -> Int -> Int -> Widget

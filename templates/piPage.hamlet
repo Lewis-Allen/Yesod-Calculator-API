@@ -1,0 +1,6 @@
+<body>
+    <p #homelink><a href=@{HomeR}>Back to home</a>
+    <h1>Pi
+    <h3>The Digit of Pi at index #{x} is:
+    <p>#{z}
+    

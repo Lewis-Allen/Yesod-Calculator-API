@@ -5,6 +5,7 @@ module MyDatabase where
 import Data.Foldable
 import Database.SQLite.Simple
 
+-- Calculation Object: Username operand1 operand2 operator result
 data Calculation = Calculation String Int Int String Float deriving (Show)
 
 instance FromRow Calculation where
@@ -31,7 +32,7 @@ insertCalc :: String -> Int -> Int -> String -> Float -> IO ()
 insertCalc v w x y z = do
                 conn <- open "calculations.db"
                 execute conn "INSERT INTO calculations (user, operand1, operand2, operator, result) VALUES (?,?,?,?,?)" (Calculation v w x y z)
-                close conn    
+                close conn
     
 getCalcs :: String -> IO ([(Int, Int, String, Float)])
 getCalcs name = do

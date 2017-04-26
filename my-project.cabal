@@ -12,6 +12,7 @@ executable          my-project
                     Handlers
                     MyDatabase
                     Utils
+                    Pi
                 
   ghc-options:      -Wall -fwarn-tabs -O2
 
