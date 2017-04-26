@@ -20,13 +20,12 @@ executable          my-project
                 , yesod-core
                 , sqlite-simple
                 , blaze-markup
-                , blaze-html
                 , shakespeare
                 , parallel
                 , yesod-auth
                 , http-conduit
                 , yesod
                 , text
-                , data-default
+                
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N

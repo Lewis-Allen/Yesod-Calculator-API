@@ -18,6 +18,7 @@ data App = App
         httpManager :: Manager
     }
 
+-- Would not be visible in source control in real-world situation
 clientId :: Text
 clientId = "224651177987-2eaniae25ln7ar5fdqcg4neqs5u3jg19.apps.googleusercontent.com"
 
