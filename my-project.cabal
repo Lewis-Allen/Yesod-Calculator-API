@@ -27,5 +27,19 @@ executable          my-project
                 , yesod
                 , text
                 
+Test-Suite test-lewis
+  type:               exitcode-stdio-1.0
+  main-is:            Spec.hs
+  other-modules:      NoRestSpec
+                      Pi
+  hs-source-dirs:     test, .
+  build-depends:      base,
+                      hspec,
+                      parallel,
+                      QuickCheck
+                      
+                      
+                      
+                
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
