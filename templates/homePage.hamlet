@@ -17,5 +17,6 @@
         <li><a href=@{MultR 10 5}>Multiplication
         <li><a href=@{DivR 10 5}>Division   
         <li><a href=@{PiR 1}>Pi
+        <li><a href=@{FibR 1}>Fibbonacci
         $maybe _ <- maid
             <li><a href=@{ListR}>Calculation History

@@ -12,7 +12,7 @@ executable          my-project
                     Handlers
                     MyDatabase
                     Utils
-                    Pi
+                    MathUtils
                 
   ghc-options:      -Wall -fwarn-tabs -O2
 
@@ -31,7 +31,7 @@ Test-Suite test-lewis
   type:               exitcode-stdio-1.0
   main-is:            Spec.hs
   other-modules:      NoRestSpec
-                      Pi
+                      MathUtils
   hs-source-dirs:     test, .
   build-depends:      base,
                       hspec,

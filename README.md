@@ -24,14 +24,16 @@ The Calculator API requires the following installed:
   * `git clone https://github.com/Lewis-Allen/Yesod-Calculator-API`
 2. Navigate into the new Yesod-Calculator-API directory
   * `cd Yesod-Calculator-API`
-3. Build the Project
+3. Build and run the project
   * `stack build && stack exec my-project`
 
 ## Running Tests
-Tests are run automatically through the stack tool
-* `stack test`
+1. Compile the math module to allow paralellism
+  * `ghc -O2 -threaded --make MathUtils.hs`
+2. Tests are run automatically through the stack tool.
+  * `stack test`
 
 ## References
 
--- __Yesod Web Framework Book__ by Michael Snoyman - Authentication, Shakespearean Templates, Persistence.
--- __Unbounded Spigot Algorithms for the Digits of Pi__ by Jeremy Gibbons - Formulae for calculating infinite list of pi. 
+* __Yesod Web Framework Book__ by Michael Snoyman - Authentication, Shakespearean Templates, Persistence.
+* __Unbounded Spigot Algorithms for the Digits of Pi__ by Jeremy Gibbons - Formulae for calculating infinite list of pi. 

@@ -6,4 +6,5 @@
 /debug          DebugR GET
 /list           ListR  GET
 /pi/#Int        PiR    GET
+/fib/#Int       FibR   GET
 /auth AuthR Auth getAuth

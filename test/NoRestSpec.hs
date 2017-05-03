@@ -6,7 +6,7 @@ import Test.Hspec
 import Test.QuickCheck
 import Test.QuickCheck.Gen
 
-import Pi (pi, fib, fib')
+import MathUtils (pi, fib, fib')
 
 main :: IO ()
 main = hspec spec

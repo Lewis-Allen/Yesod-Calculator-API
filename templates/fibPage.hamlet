@@ -1,0 +1,6 @@
+<body>
+    <p #homelink><a href=@{HomeR}>Back to home</a>
+    <h1>Fibbonacci
+    <h3>The #{x}#{z} fibbonacci number is:
+    <p>#{y}
+    

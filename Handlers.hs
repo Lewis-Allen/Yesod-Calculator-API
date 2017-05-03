@@ -15,7 +15,7 @@ import Text.Lucius
 import Text.Hamlet
 import Text.Blaze (string)
 import Data.Maybe (fromJust)
-import Pi (pi)
+import MathUtils (pi, fib)
 
 -- Home page
 getHomeR :: Handler Html 
@@ -84,6 +84,18 @@ getPiR x = do
         toWidget $(hamletFile "templates/piPage.hamlet")
         toWidget $(luciusFile "templates/piPage.lucius")
             where y = pi !! x
+                  z = getSuffix x
+                  
+-- Handler for the nth fibbonacci digit
+getFibR :: Int -> Handler Html
+getFibR x = do
+    maid <- maybeAuthId
+    let v = show maid
+    liftIO $ insertCalc v x Nothing "Fib" (fromIntegral y)
+    defaultLayout $ do
+        toWidget $(hamletFile "templates/fibPage.hamlet")
+        toWidget $(luciusFile "templates/fibPage.lucius")
+            where y = fib x
                   z = getSuffix x
                             
 -- List calculations on screen by user. User must be logged in.
