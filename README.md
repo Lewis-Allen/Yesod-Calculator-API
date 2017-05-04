@@ -8,6 +8,7 @@ The Yesod Calculator small RESTful API built with the Yesod Framework. It's goal
 - Persistent database storage. 
 - Calculation history by user. 
 - Nth digit of Pi calculator. 
+- Parallel Computation of fibonacci numbers.
 
 ## Getting Started 
 
@@ -28,9 +29,7 @@ The Calculator API requires the following installed:
   * `stack build && stack exec my-project`
 
 ## Running Tests
-1. Compile the math module to allow paralellism
-  * `ghc -O2 -threaded --make MathUtils.hs`
-2. Tests are run automatically through the stack tool.
+Tests are run automatically through the stack tool.
   * `stack test`
 
 ## References
