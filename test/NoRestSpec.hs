@@ -18,14 +18,10 @@ spec = do
              contents <- readFile "test/piDigits.txt"
              quickCheck (prop_checkPi contents)
              
-        describe "fib with parallel" $ do 
+        describe "fibonacci test" $ do 
           it "Checking fibbonacci parallelism" $ do
              fib 40 `shouldBe` 102334155
-             
-        describe "Fib without parallel" $ do
-           it "Checking fib without parallel methods " $ do
-             fib' 40 `shouldBe` 102334155
-     
+
 --prop_checkPi :: String -> Bool
 prop_checkPi contents = do
                 x <- generate genPosInt

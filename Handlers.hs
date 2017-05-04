@@ -25,7 +25,6 @@ getHomeR = do
             setTitle "Calculator API"
             toWidget $(hamletFile "templates/homePage.hamlet")
             toWidget $(luciusFile "templates/homePage.lucius")
-            -- <a href=@{AddR 5 7}?_accept=application/json>JSON addition // Use this later?
 
 -- Handler for division
 getDivR :: Int -> Int -> Handler TypedContent
